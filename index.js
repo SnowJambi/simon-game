@@ -9,7 +9,7 @@ var audioYellow = new Audio("sounds/yellow.mp3");
 var audioWrong = new Audio("sounds/wrong.mp3");
 
 // If not currently in playing state, reset/start game on any key press
-$(document).keydown(function(e) {
+$(document).keydown(function() {
   if (!$("#level-title").hasClass("playing")) {
     $("#level-title").removeClass("game-over");
     $("#level-title").addClass("playing");
@@ -20,9 +20,9 @@ $(document).keydown(function(e) {
 });
 
 // Main game logic
-$(".btn").click(function(event) {
+$(".btn").click(function() {
   // Check clicked button was the next correct button in the series
-  if (event.target === validate[0]) {
+  if (this === validate[0]) {
     // If so, remove it from the array and play corresponding sound
     validate.shift();
     playSound(this);
@@ -46,7 +46,7 @@ $(".btn").click(function(event) {
   }
 });
 
-// The following two mouse events animate the button as being pressed when clicking and releasing
+// The following two mouse events animate the button as being pressed when clicking until release
 $(".btn").mousedown(function() {
   $(this).addClass("pressed");
 });
